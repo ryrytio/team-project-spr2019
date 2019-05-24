@@ -1,0 +1,27 @@
+---
+title: "index.Rmd"
+author: "Samuel Lee"
+date: "5/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(leaflet)
+library(ggplot2)
+library(knitr)
+source("Chart 3.R")
+```
+
+## Summary
+
+
+
+## Chart 3: Endangered Species by Region
+This chart was made to show the contrast of *endangered species* in different regions. We decided to use a bar graph for this because it would help us focus in on particularly the endangered species and would help us easily see the difference in quantity of endangered species according to region. **Region 1** has the most amount of endangered species, while **Region 3** has the least amount. **Region 4** has a similar amount as **Region 8** both under *100 species*.
+
+```{r pressure, echo=FALSE}
+region_plot(tally_lead_region)
+```
+
