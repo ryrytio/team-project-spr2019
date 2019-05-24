@@ -1,0 +1,17 @@
+---
+title: "Endangered Species Report; Ryan's Portion"
+author: "Ryan Leung"
+date: "May 23, 2019"
+output: html_document
+---
+#Number of Endangered/Threatened Species Split by U.S. Regions | Lollipop Chart
+
+```{r chart, warning=FALSE, message=FALSE, echo=FALSE}
+source("chart3_leung.R")
+plot_leung(endangered_v4)
+```
+
+-The purpose of this chart is to display the number of endangered and threatened  
+species within each major U.S. region. From the chart, it can be seen that the  
+West Coast has the most number of endangered and threatened, whereas the East Coast  
+has the least.
