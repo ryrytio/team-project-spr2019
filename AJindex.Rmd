@@ -1,0 +1,38 @@
+---
+title: "AJindex"
+author: "Ana De Las Alas"
+date: "5/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+source("summary.R")
+source("chart1_delasalas.R")
+```
+
+## Introduction
+Our team is focusing on data about endangered and threatened species in the U.S. The dataset includes data about specific endangered species and their respective attributes, such as the region of the U.S. they are found in, their species group, and their critical habitat type. With this domain, we can investigate questions like which species group contains the most endangered species, which region is likely to contain certain species groups, and what are the patterns in how many acres are allotted to create critical habitats for these species. The following report will highlight summary information about the dataset as well as three visualizations that convey key points about the data. 
+
+```{r dataset, echo = FALSE}
+# Reads dataset on endangered species
+species_dataset <- read.csv("data/us_endangered_species.csv",
+                            stringsAsFactors = FALSE)
+```
+
+```{r summary list, echo = FALSE}
+list <- summary_information(species_dataset)
+```
+
+## Summary Information 
+Within the dataset, there are `r list$endangered` total endangered species and `r list$threatened` total threatened species documented. The percentage of species that are endangered is `r list$endangered_percentage`%. Our dataset shows which species group each species belongs to. Based on our calculations, we found that there were `r list$mammals` mammals documented in the dataset, which means that `r list$mammal_percentage`% of the species from the data are mammals. The organization separated the U.S. into `r list$regions` regions so that readers can better understand where each species in the dataset comes from. This information helps our team recognize that there are more endangered species than threatened species, that mammals make up a small percentage of endangered species, and that the location of the species is dependent on region rather than state or city. 
+
+
+## Chart One: Boxplot 
+I included this boxplot to show the distribution of data regarding the area of critical habitats meant to sustain endangered species. The areas are defined by the number of acres that a critical habitat takes up. This boxplot was intended to convey the medians, quartile ranges, and outliers of the values in the dataset. We are able to identify that the species group with the highest median is mammals, that critical habitats for crustaceans tend to take up, on average, a smaller area, and that critical habitats for reptiles have the largest range in acres. This boxplot helps us answer questions like how much space is allotted to preserve a critical habitat for a certain species group. 
+
+```{r boxplot, echo = FALSE}
+boxplot(acre_data)
+```
+
