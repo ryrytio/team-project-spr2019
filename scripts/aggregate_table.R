@@ -15,3 +15,7 @@ summary_table <- function(df) {
   names(aggr) <- c("US Region", "Number of Endangered/Threatened Species")
   aggr
 }
+
+
+
+

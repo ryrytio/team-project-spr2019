@@ -16,11 +16,12 @@ tally_lead_region <- endangered_file %>%
   filter(FWS.Lead.Region == "Region 1" | FWS.Lead.Region == "Region 3"|
          FWS.Lead.Region == "Region 4" | FWS.Lead.Region == "Region 8")
 
-region_plot <- function(tally_lead_region) {
-  ggplot(data = tally_lead_region) +
-  geom_col(mapping = aes(x = FWS.Lead.Region, y = n)) +
-  labs(
-    y = "# of Endangered Species", x = "Region", title =
-      "Endangered Species by Region"
-  )
+
+regions_plot <- function(dataset) {
+  ggplot(data = dataset) +
+    geom_col(mapping = aes(x = dataset[["FWS.Lead.Region"]], y = n)) +
+    labs(
+      y = "Number of Endangered Species", x = "Region", title =
+        "Endangered Species by Region"
+    )
 }
