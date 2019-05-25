@@ -54,7 +54,7 @@ plot_leung <- function(dataframe) {
                      xend = dataframe$Region,
                      y = 0,
                      yend = dataframe$n)) +
-    labs(title = "# of Endangered & Threatened per U.S. Region",
+    labs(title = "Number of Endangered & Threatened per U.S. Region",
          subtitle = "U.S. Region versus Amount Endangered/Threatened") +
     theme(axis.text.x = element_text(angle = 30, vjust = 0.7))
 }
