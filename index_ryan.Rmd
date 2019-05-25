@@ -8,7 +8,7 @@ output: html_document
 
 ```{r chart, warning=FALSE, message=FALSE, echo=FALSE}
 source("chart3_leung.R")
-plot_leung(endangered_v4)
+plot_leung(endangered_v5)
 ```
 
 -The purpose of this chart is to display the number of endangered and threatened  

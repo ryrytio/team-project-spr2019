@@ -1,8 +1,8 @@
-# chart 3; divide data into sub regions "WestCoast", "Midwest", and "EastCoast"
-# find out number of threatened/endangered in each region
 library(dplyr)
 library(knitr)
 library(ggplot2)
+# chart 3; divide data into sub regions "WestCoast", "Midwest", and "EastCoast"
+# find out number of threatened/endangered in each region
 raw_endangered_df <- read.csv("data/us_endangered_species.csv", stringsAsFactors = FALSE)
 #select only the columns needed for analysis
 endangered_v2 <- raw_endangered_df %>%
@@ -31,32 +31,24 @@ endangered_v3 <- endangered_v2 %>%
 endangered_v4 <- endangered_v3 %>%
   group_by(Region) %>%
   tally()
-
-#TEST. NOT A FUNCTION. My plot; proof of concept 
-plot_test <- ggplot(endangered_v4, 
-      aes(x = Region, y = n)) +
-  geom_point(size = 3) +
-  geom_segment(aes(x = Region,
-        xend = Region,
-        y = 0,
-        yend = n)) +
-  labs(title = "# of Endangered & Threatened per U.S. Region",
-       subtitle = "U.S. Region versus Amount Endangered/Threatened") +
-  theme(axis.text.x = element_text(angle = 30, vjust = 0.7))
+#rename column to Count
+endangered_v5 <- endangered_v4 %>%
+  select(Region, n) %>%
+  rename(Count = n)
 
 #FINAL. IS A FUNCTION. Make that into a function
 plot_leung <- function(dataframe) {
-  ggplot(dataframe, 
+  ggplot(dataframe,
          aes(x = Region,
-             y = n)) +
+             y = Count)) +
     geom_point(size = 3) +
     geom_segment(aes(x = dataframe$Region,
                      xend = dataframe$Region,
                      y = 0,
-                     yend = dataframe$n)) +
+                     yend = dataframe$Count)) +
     labs(title = "# of Endangered & Threatened per U.S. Region",
          subtitle = "U.S. Region versus Amount Endangered/Threatened") +
     theme(axis.text.x = element_text(angle = 30, vjust = 0.7))
 }
 #test function w/ param
-plot_leung(endangered_v4)
+plot_leung(endangered_v5)
