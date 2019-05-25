@@ -1,8 +1,8 @@
 library(dplyr)
 library(knitr)
 
-endangered_animals <- read.csv("../data/us_endangered_species.csv")
-
+endangered_animals <- read.csv("data/us_endangered_species.csv")
+#creating summary table function
 summary_table <- function(df) {
   aggr <- df %>%
     group_by(FWS.Lead.Region) %>%
@@ -15,7 +15,3 @@ summary_table <- function(df) {
   names(aggr) <- c("US Region", "Number of Endangered/Threatened Species")
   aggr
 }
-
-
-
-

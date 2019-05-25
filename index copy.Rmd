@@ -1,7 +1,7 @@
 ---
-title: "index.Rmd"
+title: "A Look at the Endangered & Threatened Animals Dataset"
 author: "Ana De Las Alas, Samuel Lee, Ryan Leung, Joshua Lansing"
-date: "5/24/2019"
+date: "May 24, 2019"
 output: html_document
 ---
 
@@ -32,6 +32,14 @@ list <- summary_information(species_dataset)
 Within the dataset, there are `r list$endangered` total **endangered** species and `r list$threatened` total **threatened** species documented. The percentage of species that are endangered is `r list$endangered_percentage`%. Our dataset shows which _species group_ each species belongs to. Based on our calculations, we found that there were `r list$mammals` mammals documented in the dataset, which means that `r list$mammal_percentage`% of the species from the data are mammals. The organization separated the U.S. into `r list$regions` regions so that readers can better understand where each species in the dataset comes from. This information helps our team recognize that there are more endangered species than threatened species, that mammals make up a small percentage of endangered species, and that the location of the species is dependent on region rather than state or city. 
 
 ## Aggregate Table
+This table shows the distribution of endangered/threatened animals across the
+various regions in the U.S. Some notable information from this table that is show
+is that the **Pacific**, **Southeast** and **Pacific Southwest** regions have the
+**highest** counts of endangered/threatened animals. In contrast, the **Southeast** and
+**Alaska** regions have the **lowest** counts.
+```{r aggregate table, echo = FALSE}
+summary_table(endangered_animals)
+```
 
 ## Chart One: Boxplot 
 I included this boxplot to show the **distribution** of data regarding the area of critical habitats meant to sustain endangered species. The areas are defined by the number of acres that a critical habitat takes up. This boxplot was intended to convey the medians, quartile ranges, and outliers of the values in the dataset. We are able to identify that the species group with the highest median is _mammals_, that critical habitats for crustaceans tend to take up, on average, a smaller area, and that critical habitats for reptiles have the largest range in acres. This boxplot helps us answer questions like how much space is allotted to preserve a critical habitat for a certain species group. 
@@ -49,8 +57,8 @@ regions_plot(tally_lead_region)
 
 
 ## Chart Three: Lollipop Graph  
-The purpose of this chart is to display the number of endangered and threatened species within each major U.S. region. From the chart, it can be seen that the _West Coast_ has the most number of endangered and threatened, whereas the _East Coast_ has the least.
+The purpose of this chart is to display the number of endangered and threatened species within each major U.S. region. From the chart, it can be seen that the **West Coast** has the most number of endangered and threatened, whereas the **East Coast** has the least.
 
 ```{r chart, warning=FALSE, message=FALSE, echo=FALSE}
-plot_leung(endangered_v4)
+plot_leung(endangered_v5)
 ```

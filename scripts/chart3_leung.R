@@ -3,11 +3,14 @@ library(knitr)
 library(ggplot2)
 # chart 3; divide data into sub regions "WestCoast", "Midwest", and "EastCoast"
 # find out number of threatened/endangered in each region
-raw_endangered_df <- read.csv("data/us_endangered_species.csv", stringsAsFactors = FALSE)
+raw_endangered_df <- read.csv("data/us_endangered_species.csv",
+                              stringsAsFactors = FALSE)
 #select only the columns needed for analysis
 endangered_v2 <- raw_endangered_df %>%
-  select(Species.Group, FWS.Lead.Region, FWS.Listing.Status) %>%
-  rename(Species = Species.Group, Region = FWS.Lead.Region, Status = FWS.Listing.Status)
+  select(Species.Group, FWS.Lead.Region,
+  FWS.Listing.Status) %>%
+  rename(Species = Species.Group, Region = FWS.Lead.Region,
+  Status = FWS.Listing.Status)
 
 #convert regions to West Coast, Midwest, South and East Coast. Use only mainland U.S.,
 # exclude Hawaii and Alaska
