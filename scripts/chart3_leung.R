@@ -1,9 +1,10 @@
 library(dplyr)
 library(knitr)
 library(ggplot2)
+library(plotly)
 # chart 3; divide data into sub regions "WestCoast", "Midwest", and "EastCoast"
 # find out number of threatened/endangered in each region
-raw_endangered_df <- read.csv("data/us_endangered_species.csv",
+raw_endangered_df <- read.csv("../data/us_endangered_species.csv",
                               stringsAsFactors = FALSE)
 #select only the columns needed for analysis
 endangered_v2 <- raw_endangered_df %>%
@@ -55,3 +56,7 @@ plot_leung <- function(dataframe) {
 }
 #test function w/ param
 plot_leung(endangered_v5)
+
+#interactive plot // it works lmao
+p_leung = ggplotly(plot_leung(endangered_v5))
+p_leung
