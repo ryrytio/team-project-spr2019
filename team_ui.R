@@ -46,9 +46,25 @@ tab_one <- tabPanel(
 # Creates the second tab of application
 tab_two <- tabPanel(
   "Chart One",
-  titlePanel("Chart One"),
-  p("Ryan's chart.")
-)
+  titlePanel("Number of Endangered/Threatened in Major U.S. Regions"),
+  p("The number of endangered and threatened species within each major
+    U.S. region. From the chart, it can be seen that the West Coast has the 
+    most number of endangered and threatened, whereas the East Coast
+    has the least."),
+    sidebarPanel(
+      selectInput(
+        "Region",
+        label = "Select a Region",
+        choices = list(
+          "East Coast",
+          "Midwest",
+          "The South",
+          "West Coast"
+        )
+      ),
+      mainPanel(
+        plotOutput("plot_leung"))  
+    ))
 
 # Creates the third tab of application
 tab_three <- tabPanel(
@@ -101,7 +117,14 @@ tab_five <- tabPanel(
       "https://dbw4iivs1kce3.cloudfront.net/680x/2017/11/timflach9-11-2017.jpg"
   ),
   h4("Chart One: Lollipop Graph"),
-  p("Ryan's chart takeaways."),
+  p("As mentioned earlier, the lollipop graph showed that the West Coast
+    had the least number of endangered and threatened species. In contrast,
+    the East Coast had the most endangered and threatened species. It's good
+    to observe these distributions so that policy makers and stakeholders 
+    pertaining to animal protections can allocate their efforts in areas 
+    that need more help. It is also good to note that endangered species also 
+    encompasses plant species as well because those organisms are also equally 
+    important to the ecosystem."),
   h4("Chart Two: Bar Graph"),
   p("Sam's chart takeaways."),
   h4("Chart Three: Boxplot"),
