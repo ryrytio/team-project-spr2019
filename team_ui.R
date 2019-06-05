@@ -10,7 +10,7 @@ tab_one <- tabPanel(
   # Application title
   h1("An Investigation of Endangered Species"),
   h5(em("By Ana De Las Alas, Samuel Lee, Ryan Leung and Joshua
-     Lansing")),
+        Lansing")),
 
   # Adds an image
   img(
@@ -20,7 +20,8 @@ tab_one <- tabPanel(
   ),
 
   # Adds paragraph with overview information
-  p("In our project, we explore a dataset on endangered species in the U.S.
+  p(
+    "In our project, we explore a dataset on endangered species in the U.S.
     We found the dataset from the", a("Environmental Conservation Online
     System", href = "https://ecos.fws.gov/ecp/report/table/critical-habitat.
     html?fbclid=IwAR34iloupBtcBAHfH7t8uU0WqRWJyGDKggJShn-J1mSbNVl_Zf_7qYP8kFI"),
@@ -38,7 +39,8 @@ tab_one <- tabPanel(
     areas for critical habitats. This project is important because
     we can identify which parts of the U.S. are more densely populated
     with endangered or threatened species and work to preserve the
-    critical habitats that exist in those areas."),
+    critical habitats that exist in those areas."
+  ),
 
   # Adds an image
   img("The photo above displays how the U.S. Fish and Wildlife Service
@@ -54,30 +56,72 @@ tab_two <- tabPanel(
   "Chart One",
   titlePanel("Number of Endangered/Threatened in Major U.S. Regions"),
   p("The number of endangered and threatened species within each major
-    U.S. region. From the chart, it can be seen that the West Coast has the 
-    most number of endangered and threatened, whereas the East Coast
-    has the least."),
+    U.S. region is shown in this visualization. From the chart, it
+    can be seen that the West Coast has the most number of endangered
+    and threatened, whereas the East Coast has the least."),
   sidebarLayout(
     sidebarPanel(
+      selectInput(
+        "pointcolor",
+        label = "Color",
+        choices = list(
+          "Red" = "red",
+          "Black" = "black", "Blue" = "blue"
+        ),
+        selected = "red"
+      ),
       sliderInput(
-        inputId = "Count",
-        label = "Count",
-        min = 0, max = 800,
-        value = c(0, 800)
+        "size",
+        label = "Point Size", min = 1, max = 5, value = 3
+      ),
+      sliderInput(
+        inputId = "count",
+        label = "Count Parameters",
+        min = 0, max = 700,
+        value = c(0, 600)
       )
     ),
-      
+
+    # Shows a plot of the generated lollipop graph
     mainPanel(
-      plotOutput("plot_leung")
+      plotOutput("plot_lollipop")
     )
   )
-) 
+)
 
 # Creates the third tab of application
 tab_three <- tabPanel(
   "Chart Two",
-  titlePanel("Chart Two"),
-  p("Sam's chart.")
+  titlePanel("Looking into Endangered Species Count per Region "),
+  p("This bar graph shows the number of endangered species in each
+    FWS region of the U.S. FWS Regions are the eight regions that
+    the Fish and Wildlife Service uses to identify where species
+    live. The visualization tells us that Region 1 hosts the
+    greatest number of endangered species."),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        "barcolor",
+        label = "Color",
+        choices = list(
+          "Gray" = "gray",
+          "Black" = "black", "Orange" = "orange"
+        ),
+        selected = "orange"
+      ),
+      sliderInput(
+        inputId = "yaxis",
+        label = "Y Axis Parameters",
+        min = 0, max = 600,
+        value = c(0, 500)
+      )
+    ),
+
+    # Shows a plot of the generated bar graph
+    mainPanel(
+      plotOutput("bargraph")
+    )
+  )
 )
 
 # Creates the fourth tab of application
@@ -103,12 +147,14 @@ tab_four <- tabPanel(
       selectInput(
         "color",
         label = "Fill Color",
-        choices = list("Turquoise" = "turquoise",
-                       "Black" = "black", "Yellow" = "yellow")
+        choices = list(
+          "Turquoise" = "turquoise",
+          "Black" = "black", "Yellow" = "yellow"
+        )
       )
     ),
 
-    # Shows a plot of the generated scatterplot
+    # Shows a plot of the generated boxplot
     mainPanel(
       plotOutput("boxplot")
     )
@@ -127,15 +173,15 @@ tab_five <- tabPanel(
   p("As mentioned earlier, the lollipop graph showed that the West Coast
     had the least number of endangered and threatened species. In contrast,
     the East Coast had the most endangered and threatened species. It's good
-    to observe these distributions so that policy makers and stakeholders 
-    pertaining to animal protections can allocate their efforts in areas 
-    that need more help. It is also good to note that endangered species also 
-    encompasses plant species as well because those organisms are also equally 
+    to observe these distributions so that policy makers and stakeholders
+    pertaining to animal protections can allocate their efforts in areas
+    that need more help. It is also good to note that endangered species also
+    encompasses plant species as well because those organisms are also equally
     important to the ecosystem."),
-  
+
   h4("Chart Two: Bar Graph"),
   p("Sam's chart takeaways."),
-  
+
   h4("Chart Three: Boxplot"),
   p("From the boxplot, we found that when the maximum number of acres
     displayed on the chart was 5,000 acres or more, mammals always
