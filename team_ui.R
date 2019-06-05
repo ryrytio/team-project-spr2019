@@ -21,7 +21,10 @@ tab_one <- tabPanel(
 
   # Adds paragraph with overview information
   p("In our project, we explore a dataset on endangered species in the U.S.
-    The dataset provides information on a particular species' scientific
+    We found the dataset from the", a("Environmental Conservation Online
+    System", href = "https://ecos.fws.gov/ecp/report/table/critical-habitat.
+    html?fbclid=IwAR34iloupBtcBAHfH7t8uU0WqRWJyGDKggJShn-J1mSbNVl_Zf_7qYP8kFI"),
+    ". The dataset provides information on a particular species' scientific
     name, species group, region of habitation and critical habitat type. With
     this dataset, we hope to answer which region of the U.S. contains the
     most endangered and threatened species, which region contains the most
@@ -32,7 +35,10 @@ tab_one <- tabPanel(
     into eight regions and uses these eight regions to categorize the
     species' habitat locations. For the last question, we will look
     into the columns 'species group' and 'acres and miles' to compare
-    areas for critical habitats."),
+    areas for critical habitats. This project is important because
+    we can identify which parts of the U.S. are more densely populated
+    with endangered or threatened species and work to preserve the
+    critical habitats that exist in those areas."),
 
   # Adds an image
   img("The photo above displays how the U.S. Fish and Wildlife Service
@@ -51,6 +57,7 @@ tab_two <- tabPanel(
     U.S. region. From the chart, it can be seen that the West Coast has the 
     most number of endangered and threatened, whereas the East Coast
     has the least."),
+  sidebarLayout(
     sidebarPanel(
       selectInput(
         "Region",
@@ -61,10 +68,14 @@ tab_two <- tabPanel(
           "The South",
           "West Coast"
         )
-      ),
-      mainPanel(
-        plotOutput("plot_leung"))  
-    ))
+      )
+    ),
+      
+    mainPanel(
+      plotOutput("plot_leung")
+    )
+  )
+) 
 
 # Creates the third tab of application
 tab_three <- tabPanel(
@@ -125,8 +136,10 @@ tab_five <- tabPanel(
     that need more help. It is also good to note that endangered species also 
     encompasses plant species as well because those organisms are also equally 
     important to the ecosystem."),
+  
   h4("Chart Two: Bar Graph"),
   p("Sam's chart takeaways."),
+  
   h4("Chart Three: Boxplot"),
   p("From the boxplot, we found that when the maximum number of acres
     displayed on the chart was 5,000 acres or more, mammals always

@@ -2,6 +2,7 @@
 library(ggplot2)
 library(dplyr)
 library(shiny)
+
 # Reads in the data
 species_data <- read.csv("data/us_endangered_species.csv",
   stringsAsFactors = FALSE
@@ -17,25 +18,6 @@ acre_data <- species_data %>%
     "Insects", "Mammals", "Reptiles"
   ))
 
-# Define server logic required to draw boxplot
-shiny_server <- (function(input, output) {
-  output$boxplot <- renderPlot({
-    b <- ggplot(
-      data = acre_data,
-      mapping = aes_string(x = "Species.Group", y = "Acres")
-    ) +
-      geom_boxplot(fill = input$color, color = "turquoise4") +
-      scale_y_continuous(limits = input$acres) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-      ggtitle("Distribution of Acres of Critical Habitats For
-              Different Species Groups") +
-      xlab("Species Group") +
-      ylab("Acres")
-
-    b
-  })
-})
-#Ryan's portion
 # chart 3; divide data into sub regions "WestCoast", "Midwest", and "EastCoast"
 # find out number of threatened/endangered in each region
 raw_endangered_df <- read.csv("data/us_endangered_species.csv",
@@ -69,23 +51,42 @@ endangered_v3 <- endangered_v2 %>%
 endangered_v4 <- endangered_v3 %>%
   group_by(Region) %>%
   tally()
+
 #rename column to Count
 endangered_v5 <- endangered_v4 %>%
   select(Region, n) %>%
   rename(Count = n)
 
-#FINAL. IS A FUNCTION. Make that into a function
-plot_leung <- function(input, output) {
+# Define server logic required to draw boxplot
+shiny_server <- (function(input, output) {
+  output$boxplot <- renderPlot({
+    b <- ggplot(
+      data = acre_data,
+      mapping = aes_string(x = "Species.Group", y = "Acres")
+    ) +
+      geom_boxplot(fill = input$color, color = "turquoise4") +
+      scale_y_continuous(limits = input$acres) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+      ggtitle("Distribution of Acres of Critical Habitats For
+              Different Species Groups") +
+      xlab("Species Group") +
+      ylab("Acres")
+
+    b
+  })
+  
   output$plot_leung <- renderPlot({
-  p <- ggplot(dataframe,
-         aes(x = Region,
-             y = Count)) +
-    geom_point(size = 3) +
-    geom_segment(aes(x = dataframe$Region,
-                     xend = dataframe$Region,
-                     y = 0,
-                     yend = dataframe$Count)) +
-    labs(title = "# of Endangered & Threatened per U.S. Region",
-         subtitle = "U.S. Region versus Amount Endangered/Threatened") +
-    theme(axis.text.x = element_text(angle = 30, vjust = 0.7))
-})}
+    p <- ggplot(endangered_v5,
+                aes(x = Region,
+                    y = Count)) +
+      geom_point(size = 3) +
+      geom_segment(aes(x = Region,
+                       xend = Region,
+                       y = 0,
+                       yend = Count)) +
+      labs(title = "# of Endangered & Threatened per U.S. Region",
+           subtitle = "U.S. Region versus Amount Endangered/Threatened") +
+      theme(axis.text.x = element_text(angle = 30, vjust = 0.7))
+    p
+  })
+})
