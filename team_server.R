@@ -2,7 +2,7 @@
 library(ggplot2)
 library(dplyr)
 library(shiny)
-
+library(plotly)
 # Reads in the data
 species_data <- read.csv("data/us_endangered_species.csv",
   stringsAsFactors = FALSE

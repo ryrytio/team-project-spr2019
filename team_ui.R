@@ -59,15 +59,11 @@ tab_two <- tabPanel(
     has the least."),
   sidebarLayout(
     sidebarPanel(
-      selectInput(
-        "Region",
-        label = "Select a Region",
-        choices = list(
-          "East Coast",
-          "Midwest",
-          "The South",
-          "West Coast"
-        )
+      sliderInput(
+        inputId = "Count",
+        label = "Count",
+        min = 0, max = 800,
+        value = c(0, 800)
       )
     ),
       
