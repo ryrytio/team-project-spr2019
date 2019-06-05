@@ -180,7 +180,17 @@ tab_five <- tabPanel(
     important to the ecosystem."),
 
   h4("Chart Two: Bar Graph"),
-  p("Sam's chart takeaways."),
+  p("The bar graph shows that Region 1 had the most amount of endangered 
+    species while Region 3 has the least amount of endangered species. 
+    Also, the next highest count was Region 8. There is about a 300 count
+    difference in endangered species. This is important because it shows
+    the discrepancy in regions and how big the discrepancy is in Region 1
+    compared to all the other regions. This can also continue to stress
+    where there needs the most help like the lollipop graph showed. However,
+    this information is different from the lollipop graph because it is more
+    specific of the area in which there are endangered species instead of the
+    more general west coast. And while Region 8 is on the west coast as well,
+    it is nowhere near the count for endangered species in Region 1."),
 
   h4("Chart Three: Boxplot"),
   p("From the boxplot, we found that when the maximum number of acres
