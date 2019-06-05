@@ -1,0 +1,24 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family:Tahoma, Geneva, sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  color:white;
+}
+
+li {
+  font-family:Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+}
+
+img {
+  border:3px solid white;
+}
+
+p {
+  font-family:Tahoma, Geneva, sans-serif;
+  color:white;
+}
+
+body {
+  background-color:darkgreen;
+}

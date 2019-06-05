@@ -43,12 +43,12 @@ tab_one <- tabPanel(
   ),
 
   # Adds an image
-  img("The photo above displays how the U.S. Fish and Wildlife Service
-      divided the country into eight regions to help identify the
-      location of different species' habitats.",
-    src = "https://www.fws.gov/where/NWRS05dotmapR9-140pixelB.jpg",
+  img(src = "https://www.fws.gov/where/NWRS05dotmapR9-140pixelB.jpg",
     width = 800, height = 575
-  )
+  ),
+  p("The photo above displays how the U.S. Fish and Wildlife Service
+      divided the country into eight regions to help identify the
+      location of different species' habitats.")
 )
 
 # Creates the second tab of application
@@ -206,5 +206,6 @@ shinyUI <- navbarPage(
   tab_two,
   tab_three,
   tab_four,
-  tab_five
+  tab_five,
+  includeCSS("style.css")
 )
