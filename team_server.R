@@ -1,7 +1,6 @@
 # Loads the needed packages
 library(ggplot2)
 library(dplyr)
-library(shiny)
 
 # Reads in the data
 species_data <- read.csv("data/us_endangered_species.csv",
@@ -25,8 +24,6 @@ tally_lead_region <- species_data %>%
   count(FWS.Listing.Status) %>%
   filter(FWS.Listing.Status == "Endangered") %>%
   filter(FWS.Lead.Region != "NOAA")
-# filter(FWS.Lead.Region == "Region 1" | FWS.Lead.Region == "Region 3" |
-#      FWS.Lead.Region == "Region 4" | FWS.Lead.Region == "Region 8")
 
 # Chart 1: divides data into sub regions "WestCoast", "Midwest", and "EastCoast"
 # and finds out number of threatened/endangered in each region

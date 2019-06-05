@@ -1,6 +1,3 @@
-# Loads the needed package
-library(shiny)
-
 # Define UI for application
 
 # Creates first tab of application
@@ -20,8 +17,7 @@ tab_one <- tabPanel(
   ),
 
   # Adds paragraph with overview information
-  p(
-    "In our project, we explore a dataset on endangered species in the U.S.
+  p("In our project, we explore a dataset on endangered species in the U.S.
     We found the dataset from the", a("Environmental Conservation Online
     System", href = "https://ecos.fws.gov/ecp/report/table/critical-habitat.
     html?fbclid=IwAR34iloupBtcBAHfH7t8uU0WqRWJyGDKggJShn-J1mSbNVl_Zf_7qYP8kFI"),
@@ -170,27 +166,28 @@ tab_five <- tabPanel(
       "https://dbw4iivs1kce3.cloudfront.net/680x/2017/11/timflach9-11-2017.jpg"
   ),
   h4("Chart One: Lollipop Graph"),
-  p("As mentioned earlier, the lollipop graph showed that the West Coast
-    had the least number of endangered and threatened species. In contrast,
-    the East Coast had the most endangered and threatened species. It's good
-    to observe these distributions so that policy makers and stakeholders
-    pertaining to animal protections can allocate their efforts in areas
-    that need more help. It is also good to note that endangered species also
-    encompasses plant species as well because those organisms are also equally
-    important to the ecosystem."),
+  p("As mentioned earlier, the lollipop graph showed that the East Coast
+    had the least number of endangered and threatened species, at just under
+    10. In contrast, the West Coast had the most endangered and threatened
+    species at over 550. It's good to observe these distributions so that
+    policy makers and stakeholders pertaining to animal protections can
+    allocate their efforts in areas that need more help. It is also good to
+    note that endangered species also encompasses plant species as well because
+    those organisms are also equally important to the ecosystem."),
 
   h4("Chart Two: Bar Graph"),
-  p("The bar graph shows that Region 1 had the most amount of endangered 
-    species while Region 3 has the least amount of endangered species. 
-    Also, the next highest count was Region 8. There is about a 300 count
-    difference in endangered species. This is important because it shows
-    the discrepancy in regions and how big the discrepancy is in Region 1
-    compared to all the other regions. This can also continue to stress
-    where there needs the most help like the lollipop graph showed. However,
-    this information is different from the lollipop graph because it is more
-    specific of the area in which there are endangered species instead of the
-    more general west coast. And while Region 8 is on the west coast as well,
-    it is nowhere near the count for endangered species in Region 1."),
+  p("The bar graph shows that Region 1, the Pacific Northwest, had the most
+    amount of endangered species while Region 3, the Midwest, has the least
+    amount of endangered species. Also, the next highest count was Region 8,
+    the Pacific Southwest. There is about a 300 count difference in endangered
+    species between Region 1 and 8. This is important because it shows the
+    discrepancy in regions, and how big the discrepancy is in Region 1 compared
+    to all of the other regions. This also further stresses which regions need
+    the most attention, much like the lollipop graph. However, this information
+    is different from the lollipop graph because it is further specifies the
+    area in which there are endangered species instead of the West Coast at
+    large. While Region 8 is on the west coast as well, it has nowhere near the
+    count for endangered species that Region 1 has."),
 
   h4("Chart Three: Boxplot"),
   p("From the boxplot, we found that when the maximum number of acres
